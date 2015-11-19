@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_search_view_shadow">#80000000</color>
+    <color name="color_search_view_text">#212121</color>
+    <color name="color_search_view_suggest_text">#212121</color>
+    <color name="color_search_view_suggest_divider">#EDEDED</color>
+</resources>
