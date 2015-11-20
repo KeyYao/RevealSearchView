@@ -263,7 +263,7 @@ public class SearchView extends RelativeLayout {
      * @param suggest   item
      * @param clearData 是否清空原数据源
      */
-    public void addSerchSuggest(SearchSuggest suggest, boolean clearData) {
+    public void addSearchSuggest(SearchSuggest suggest, boolean clearData) {
         /** clear data */
         if (clearData) {
             mSuggestData.clear();
