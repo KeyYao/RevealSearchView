@@ -9,6 +9,24 @@ package moe.key.yao.search;
  */
 public class SearchSuggest {
 
+    public SearchSuggest() {
+    }
+
+    public SearchSuggest(String text) {
+        this.text = text;
+    }
+
+    public SearchSuggest(String text, int leftIconResource) {
+        this.text = text;
+        this.leftIconResource = leftIconResource;
+    }
+
+    public SearchSuggest(String text, int leftIconResource, int rightIconResResource) {
+        this.text = text;
+        this.leftIconResource = leftIconResource;
+        this.rightIconResResource = rightIconResResource;
+    }
+
     /**
      * 显示的文本
      */
