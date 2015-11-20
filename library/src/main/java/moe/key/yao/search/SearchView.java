@@ -50,16 +50,16 @@ import moe.key.yao.search.reveal.animation.ViewAnimationUtils;
  */
 public class SearchView extends RelativeLayout {
 
-    /** 展开动画所需的时间 */
-    private static final int DURATION_REVEAL_ANIMATION = 150;
+    /** 展开动画所需的时间                   default 150ms */
+    private static int DURATION_REVEAL_ANIMATION = 150;
 
-    /** 隐藏动画所需的时间 */
-    private static final int DURATION_HIDE_ANIMATION = 350;
+    /** 隐藏动画所需的时间                   default 350ms */
+    private static int DURATION_HIDE_ANIMATION = 350;
 
-    /** 提示列表的LayoutTransition动画时间 */
+    /** 提示列表的LayoutTransition动画时间   default 75ms */
     private static final long DURATION_LAYOUT_TRANSITION = 75L;
 
-    /** 延迟显示键盘所需的时间 */
+    /** 延迟显示键盘所需的时间                default 100ms */
     private static final long DELAY_SHOW_SOFT_KEYBOARD = 100L;
 
     /** 搜索编辑框 */
@@ -176,6 +176,11 @@ public class SearchView extends RelativeLayout {
         mShadowBackground.setOnClickListener(new ClickListener());
         mSuggestListView.setOnItemClickListener(new SuggestItemClickListener());
 
+        /** set view elevation */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setElevation(9.0f);
+        }
+
     }
 
     /**
@@ -196,6 +201,60 @@ public class SearchView extends RelativeLayout {
     public void attachActivity(Activity activity, int menuId) {
         mAttachedActivity = activity;
         mAttachedMenuId = menuId;
+    }
+
+    /**
+     * 设置搜索框的 hint text
+     *
+     * @param hint    text
+     */
+    public void setSearchHint(String hint) {
+        mSearchEdit.setHint(hint);
+    }
+
+    /**
+     * 设置搜索框的 hint text
+     *
+     * @param resId    text resId
+     */
+    public void setSearchHint(int resId) {
+        mSearchEdit.setHint(resId);
+    }
+
+    /**
+     * 设置搜索框的 text
+     *
+     * @param text    text
+     */
+    public void setSearchText(String text) {
+        mSearchEdit.setText(text);
+    }
+
+    /**
+     * 设置搜索框的 text
+     *
+     * @param resId    text resId
+     */
+    public void setSearchText(int resId) {
+        mSearchEdit.setText(resId);
+    }
+
+    /**
+     * 设置展开动画的时间
+     *
+     * @param duration    动画持续时间，单位ms
+     */
+    public void setOpenAnimationDuration(int duration) {
+        DURATION_REVEAL_ANIMATION = duration;
+    }
+
+    /**
+     * 设置隐藏动画的时间
+     *
+     * @param duration    动画持续时间，单位ms
+     */
+    public void setCloseAnimationDuration(int duration) {
+        DURATION_HIDE_ANIMATION = duration;
     }
 
     /**
@@ -239,6 +298,9 @@ public class SearchView extends RelativeLayout {
         /** add data */
         mSuggestData.add(suggest);
 
+        /** show or hide suggest divider */
+        mSuggestListDivider.setVisibility(!mSuggestData.isEmpty() ? View.VISIBLE : View.GONE);
+
         /** notify adapter */
         mSuggestAdapter.notifyDataSetChanged();
     }
@@ -251,6 +313,23 @@ public class SearchView extends RelativeLayout {
     private void addSearchSuggest(List<SearchSuggest> suggests) {
         /** add data */
         mSuggestData.addAll(suggests);
+
+        /** show or hide suggest divider */
+        mSuggestListDivider.setVisibility(!mSuggestData.isEmpty() ? View.VISIBLE : View.GONE);
+
+        /** notify adapter */
+        mSuggestAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * 清空提示数据
+     */
+    public void clearSuggestData() {
+        /** clear data */
+        mSuggestData.clear();
+
+        /** hide suggest divider */
+        mSuggestListDivider.setVisibility(View.GONE);
 
         /** notify adapter */
         mSuggestAdapter.notifyDataSetChanged();
