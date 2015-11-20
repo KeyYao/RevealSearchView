@@ -17,6 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SearchHistoryActivity"
+            android:label="@string/title_search_history">
+        </activity>
+        <activity
+            android:name=".SearchSuggestActivity"
+            android:label="@string/title_search_suggest">
+        </activity>
     </application>
 
 </manifest>

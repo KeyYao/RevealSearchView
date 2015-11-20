@@ -15,11 +15,22 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/history_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="10dp"
+        android:text="search history"
+        android:textAllCaps="false"/>
 
-    <moe.key.yao.search.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/suggests_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/history_btn"
+        android:layout_margin="10dp"
+        android:text="search suggest"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>
