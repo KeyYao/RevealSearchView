@@ -58,6 +58,8 @@ public class SearchHistoryActivity extends AppCompatActivity implements View.OnC
         mSearchView.setSearchHint("请输入关键字");
         mSearchView.setOnSearchSubmitListener(new SearchSubmitListener());
         mSearchView.setOnSuggestListItemClickListener(new SuggestItemClickListener());
+        mSearchView.setOpenAnimationDuration(500);
+        mSearchView.setCloseAnimationDuration(750);
 
         mClearHistoryBtn = (AppCompatButton) findViewById(R.id.clear_history_btn);
         mClearHistoryBtn.setOnClickListener(this);
