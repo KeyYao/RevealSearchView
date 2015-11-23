@@ -1,8 +1,10 @@
 # RevealSearchView
 
 
-带有Circular Reveal动画的SearchView，符合Material Design<br>
-仿 [Bilibili](https://play.google.com/store/apps/details?id=tv.danmaku.bili) 、google play store 的搜索框<br>
+The Material Design SearchView.<br>
+仿 [Bilibili](https://play.google.com/store/apps/details?id=tv.danmaku.bili) 、Google Play Store 的搜索框.<br>
+支持Circular Reveal动画展开和关闭.<br>
+Circular Reveal动画支持 5.0 之前的系统.<br>
 
 参考[CircularReveal](https://github.com/ozodrukh/CircularReveal)、[PersistentSearch](https://github.com/Quinny898/PersistentSearch)<br>
 
