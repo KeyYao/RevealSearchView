@@ -51,7 +51,7 @@
                 android:layout_toLeftOf="@id/search_view_submit_btn"
                 android:background="@drawable/abc_item_background_holo_light"
                 android:src="@drawable/ic_btn_search_clear"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
 
             <EditText

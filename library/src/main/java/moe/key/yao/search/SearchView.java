@@ -648,7 +648,7 @@ public class SearchView extends RelativeLayout {
         public void afterTextChanged(Editable s) {
             /** show or hide clear button */
             if (s.length() <= 0) {
-                mClearBtn.setVisibility(View.INVISIBLE);
+                mClearBtn.setVisibility(View.GONE);
             } else {
                 mClearBtn.setVisibility(View.VISIBLE);
             }
