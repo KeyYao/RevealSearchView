@@ -50,17 +50,17 @@ import moe.key.yao.search.reveal.animation.ViewAnimationUtils;
  */
 public class SearchView extends RelativeLayout {
 
-    /** 展开动画所需的时间                   default 150ms */
-    private static int DURATION_REVEAL_ANIMATION = 150;
-
-    /** 隐藏动画所需的时间                   default 350ms */
-    private static int DURATION_HIDE_ANIMATION = 350;
-
     /** 提示列表的LayoutTransition动画时间   default 75ms */
     private static final long DURATION_LAYOUT_TRANSITION = 75L;
 
     /** 延迟显示键盘所需的时间                default 100ms */
     private static final long DELAY_SHOW_SOFT_KEYBOARD = 100L;
+
+    /** 展开动画所需的时间                   default 150ms */
+    private int mRevealDuration = 150;
+
+    /** 隐藏动画所需的时间                   default 350ms */
+    private int mHideDuration = 350;
 
     /** 搜索编辑框 */
     private EditText mSearchEdit;
@@ -245,7 +245,7 @@ public class SearchView extends RelativeLayout {
      * @param duration    动画持续时间，单位ms
      */
     public void setOpenAnimationDuration(int duration) {
-        DURATION_REVEAL_ANIMATION = duration;
+        mRevealDuration = duration;
     }
 
     /**
@@ -254,7 +254,7 @@ public class SearchView extends RelativeLayout {
      * @param duration    动画持续时间，单位ms
      */
     public void setCloseAnimationDuration(int duration) {
-        DURATION_HIDE_ANIMATION = duration;
+        mHideDuration = duration;
     }
 
     /**
@@ -421,7 +421,7 @@ public class SearchView extends RelativeLayout {
         /** create animator */
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(rootLayout, x, y, 0, finalRadius);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
-        animator.setDuration(DURATION_REVEAL_ANIMATION);
+        animator.setDuration(mRevealDuration);
         animator.addListener(new RevealAnimatorListener());
 
         /** start animator */
@@ -457,7 +457,7 @@ public class SearchView extends RelativeLayout {
         /** create animator */
         SupportAnimator animator = ViewAnimationUtils.createCircularReveal(rootLayout, x, y, 0, finalRadius);
         animator.setInterpolator(new ReverseInterpolator());
-        animator.setDuration(DURATION_HIDE_ANIMATION);
+        animator.setDuration(mHideDuration);
         animator.addListener(new HideAnimatorListener());
 
         /** start animator */
