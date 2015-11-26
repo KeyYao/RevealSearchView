@@ -352,6 +352,11 @@ public class SearchView extends RelativeLayout {
         /** show SearchView */
         setVisibility(View.VISIBLE);
 
+        /** set the Search EditText selection */
+        if (!TextUtils.isEmpty(mSearchEdit.getText().toString())) {
+            mSearchEdit.setSelection(mSearchEdit.getText().toString().length());
+        }
+
         /** find action menu view */
         View actionMenu = mAttachedActivity.findViewById(mAttachedMenuId);
 
@@ -544,10 +549,6 @@ public class SearchView extends RelativeLayout {
      * @param text    search text
      */
     private void submit(String text) {
-        if (TextUtils.isEmpty(text)) {
-            return;
-        }
-
         /** OnSearchSubmitListener onSubmit callback */
         if (mSubmitListener != null) {
             mSubmitListener.onSubmit(text);
