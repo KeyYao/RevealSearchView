@@ -19,6 +19,8 @@ import java.util.List;
 
 import moe.key.yao.search.SearchSuggest;
 import moe.key.yao.search.SearchView;
+import moe.key.yao.search.listener.OnSearchSubmitListener;
+import moe.key.yao.search.listener.OnSuggestListItemClickListener;
 
 /**
  * Created by Key on 2015/11/20.
@@ -148,7 +150,7 @@ public class SearchHistoryActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    private class SearchSubmitListener implements SearchView.OnSearchSubmitListener {
+    private class SearchSubmitListener implements OnSearchSubmitListener {
 
         @Override
         public void onSubmit(String text) {
@@ -157,7 +159,7 @@ public class SearchHistoryActivity extends AppCompatActivity implements View.OnC
 
     }
 
-    private class SuggestItemClickListener implements SearchView.OnSuggestListItemClickListener {
+    private class SuggestItemClickListener implements OnSuggestListItemClickListener {
 
         @Override
         public boolean onItemClick(int position, SearchSuggest item) {

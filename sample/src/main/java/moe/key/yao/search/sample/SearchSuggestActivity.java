@@ -17,6 +17,7 @@ import java.util.Locale;
 
 import moe.key.yao.search.SearchSuggest;
 import moe.key.yao.search.SearchView;
+import moe.key.yao.search.listener.OnSearchTextChangedListener;
 
 /**
  * Created by Key on 2015/11/20.
@@ -110,7 +111,7 @@ public class SearchSuggestActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class SearchTextChangedListener implements SearchView.OnSearchTextChangedListener {
+    private class SearchTextChangedListener implements OnSearchTextChangedListener {
 
         @Override
         public void onChanged(String text) {

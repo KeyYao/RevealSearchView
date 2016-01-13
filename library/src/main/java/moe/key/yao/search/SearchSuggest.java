@@ -1,5 +1,7 @@
 package moe.key.yao.search;
 
+import moe.key.yao.search.annotation.NotProguard;
+
 /**
  * Created by Key on 2015/11/18.<br>
  * <p/>
@@ -7,6 +9,7 @@ package moe.key.yao.search;
  *
  * @author Key
  */
+@NotProguard
 public class SearchSuggest {
 
     public SearchSuggest() {

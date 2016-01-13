@@ -32,6 +32,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import moe.key.yao.search.annotation.NotProguard;
+import moe.key.yao.search.listener.OnSearchSubmitListener;
+import moe.key.yao.search.listener.OnSearchTextChangedListener;
+import moe.key.yao.search.listener.OnSearchViewStatusChangedListener;
+import moe.key.yao.search.listener.OnSuggestListItemClickListener;
 import moe.key.yao.search.reveal.animation.ReverseInterpolator;
 import moe.key.yao.search.reveal.animation.SupportAnimator;
 import moe.key.yao.search.reveal.animation.ViewAnimationUtils;
@@ -188,6 +193,7 @@ public class SearchView extends RelativeLayout {
      *
      * @return 是否是打开状态
      */
+    @NotProguard
     public boolean isOpened() {
         return mOpening;
     }
@@ -198,6 +204,7 @@ public class SearchView extends RelativeLayout {
      * @param activity    SearchView所依附的Activity
      * @param menuId      ActionMenu的Id
      */
+    @NotProguard
     public void attachActivity(Activity activity, int menuId) {
         mAttachedActivity = activity;
         mAttachedMenuId = menuId;
@@ -208,6 +215,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param hint    text
      */
+    @NotProguard
     public void setSearchHint(String hint) {
         mSearchEdit.setHint(hint);
     }
@@ -217,6 +225,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param resId    text resId
      */
+    @NotProguard
     public void setSearchHint(int resId) {
         mSearchEdit.setHint(resId);
     }
@@ -226,6 +235,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param text    text
      */
+    @NotProguard
     public void setSearchText(String text) {
         mSearchEdit.setText(text);
     }
@@ -235,6 +245,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param resId    text resId
      */
+    @NotProguard
     public void setSearchText(int resId) {
         mSearchEdit.setText(resId);
     }
@@ -244,6 +255,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param duration    动画持续时间，单位ms
      */
+    @NotProguard
     public void setOpenAnimationDuration(int duration) {
         mRevealDuration = duration;
     }
@@ -253,6 +265,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param duration    动画持续时间，单位ms
      */
+    @NotProguard
     public void setCloseAnimationDuration(int duration) {
         mHideDuration = duration;
     }
@@ -263,6 +276,7 @@ public class SearchView extends RelativeLayout {
      * @param suggest   item
      * @param clearData 是否清空原数据源
      */
+    @NotProguard
     public void addSearchSuggest(SearchSuggest suggest, boolean clearData) {
         /** clear data */
         if (clearData) {
@@ -279,6 +293,7 @@ public class SearchView extends RelativeLayout {
      * @param suggests  list
      * @param clearData 是否清空原数据源
      */
+    @NotProguard
     public void addSearchSuggest(List<SearchSuggest> suggests, boolean clearData) {
         /** clear data */
         if (clearData) {
@@ -324,6 +339,7 @@ public class SearchView extends RelativeLayout {
     /**
      * 清空提示数据
      */
+    @NotProguard
     public void clearSuggestData() {
         /** clear data */
         mSuggestData.clear();
@@ -338,6 +354,7 @@ public class SearchView extends RelativeLayout {
     /**
      * 打开SearchView
      */
+    @NotProguard
     public void openSearchView() {
         /** check attach activity */
         if (mAttachedActivity == null || mAttachedMenuId == -1) {
@@ -378,6 +395,7 @@ public class SearchView extends RelativeLayout {
     /**
      * 关闭SearchView
      */
+    @NotProguard
     public void closeSearchView() {
         /** check is running animation */
         if (isAnimationRunning) {
@@ -817,82 +835,11 @@ public class SearchView extends RelativeLayout {
     }
 
     /**
-     * SearchView状态改变事件监听
-     */
-    public interface OnSearchViewStatusChangedListener {
-        /**
-         * 搜索框打开时（展开动画刚启动时）
-         */
-        void onOpenStart();
-
-        /**
-         * 搜索框已经打开（展开动画已经执行完毕时）
-         */
-        void onOpened();
-
-        /**
-         * 搜索框关闭时（关闭动画刚启动时）
-         */
-        void onCloseStart();
-
-        /**
-         * 搜索框已经关闭（关闭动画执行完毕时）
-         */
-        void onClosed();
-    }
-
-    /**
-     * 搜索框内容改变事件监听
-     */
-    public interface OnSearchTextChangedListener {
-        /**
-         * 内容改变时
-         *
-         * @param text    当前EditText中显示的text
-         */
-        void onChanged(String text);
-
-        /**
-         * 清空内容时（clear按钮点击时）
-         */
-        void onClear();
-    }
-
-    /**
-     * 提交搜索事件监听<br>
-     * 触发条件：<br>
-     *      1.点击了提交按钮<br>
-     *      2.点击键盘的search键<br>
-     *      3.点击的提示列表Item（根据 OnSuggestListItemClickListener 的 onItemClick 方法 返回值 决定是否执行）
-     */
-    public interface OnSearchSubmitListener {
-        /**
-         * 提交事件
-         *
-         * @param text    提交搜索的text
-         */
-        void onSubmit(String text);
-    }
-
-    /**
-     * 提示列表的Item点击事件监听
-     */
-    public interface OnSuggestListItemClickListener {
-        /**
-         * Item点击事件
-         *
-         * @param position    item 的 position
-         * @param item        item
-         * @return true表示覆盖默认操作，false表示继续执行默认操作
-         */
-        boolean onItemClick(int position, SearchSuggest item);
-    }
-
-    /**
      * 设置 OnSearchViewStatusChangedListener
      *
      * @param listener    listener
      */
+    @NotProguard
     public void setOnSearchViewStatusChangedListener(OnSearchViewStatusChangedListener listener) {
         this.mStatusChangedListener = listener;
     }
@@ -902,6 +849,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param listener    listener
      */
+    @NotProguard
     public void setOnSearchTextChangedListener(OnSearchTextChangedListener listener) {
         this.mTextChangedListener = listener;
     }
@@ -911,6 +859,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param listener    listener
      */
+    @NotProguard
     public void setOnSearchSubmitListener(OnSearchSubmitListener listener) {
         this.mSubmitListener = listener;
     }
@@ -920,6 +869,7 @@ public class SearchView extends RelativeLayout {
      *
      * @param listener    listener
      */
+    @NotProguard
     public void setOnSuggestListItemClickListener(OnSuggestListItemClickListener listener) {
         this.mSuggestListItemClickListener = listener;
     }
